@@ -11,6 +11,9 @@ public class Gridy : MonoBehaviour
     public LayerMask unwalkableMask;
     public Vector2 gridWorldSize;
     public float nodeRadius;
+    public TerrainType[] walkableRegions;
+    LayerMask walkableMask;
+    Dictionary<int, int> walkableRegionsDictionary = new Dictionary<int, int>();
     Node[,] gridy;
     float nodeDiameter;
     int gridSizeX, gridSizeY;
@@ -19,6 +22,13 @@ public class Gridy : MonoBehaviour
         nodeDiameter = nodeRadius * 2;
         gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
         gridSizeY = Mathf.RoundToInt(gridWorldSize.y / nodeDiameter);
+
+        foreach (TerrainType region in walkableRegions)
+        {
+            walkableMask.value |= region.terrainMask.value;
+            walkableRegionsDictionary.Add((int)Mathf.Log(region.terrainMask.value, 2), region.terrainPenalty);
+        }
+
         CreateGrid();
 
     }
@@ -43,7 +53,24 @@ public class Gridy : MonoBehaviour
                 {
                     //Debug.Log("Unwalkable at position: " + worldPoint);
                 }
-                gridy[x, y] = new Node(walkable, worldPoint, x, y);
+                int movementPenalty = 0;
+
+                if (walkable)
+                {
+                    Ray ray = new Ray(worldPoint + Vector3.forward * 50, Vector3.back);
+                    RaycastHit hit;
+
+                    if (Physics.Raycast(ray, out hit, 100, walkableMask))
+                    {
+
+                        walkableRegionsDictionary.TryGetValue(hit.collider.gameObject.layer, out movementPenalty);
+                        Debug.Log(movementPenalty);
+
+                    }
+
+                }
+
+                gridy[x, y] = new Node(walkable, worldPoint, x, y, movementPenalty);
             }
         }
     }
@@ -93,5 +120,11 @@ public class Gridy : MonoBehaviour
             }
         }
 
+    }
+    [System.Serializable]
+    public class TerrainType
+    {
+        public LayerMask terrainMask;
+        public int terrainPenalty;
     }
 }
