@@ -5,13 +5,25 @@ using UnityEngine;
 public class Unit : MonoBehaviour
 {
     public Transform traget;
-    float speed = 10;
+    public float speed = 10;
     Vector3[] path;
     int targetIndex;
+    bool currentlyWalking = false;
 
     void Start()
     {
+        currentlyWalking = true;
         PathRequestManeger.RequestPath(transform.position, traget.position, OnPathFound);
+    }
+
+    void Update()
+    {
+        if (!currentlyWalking)
+        {
+            currentlyWalking = true;
+            PathRequestManeger.RequestPath(transform.position, traget.position, OnPathFound);
+            DrawGizmos();
+        }
     }
 
     public void OnPathFound(Vector3[] newPath, bool pathSucessful)
@@ -30,9 +42,14 @@ public class Unit : MonoBehaviour
         {
             if (transform.position == currentWaypoint)
             {
+                Debug.Log(currentWaypoint);
+
                 targetIndex++;
                 if (targetIndex >= path.Length)
                 {
+                    path = new Vector3[0];
+                    targetIndex = 0;
+                    currentlyWalking = false;
                     yield break;
                 }
                 currentWaypoint = path[targetIndex];
@@ -42,6 +59,26 @@ public class Unit : MonoBehaviour
         }
     }
     public void OnDrawGizmos()
+    {
+        if (path != null)
+        {
+            for (int i = targetIndex; i < path.Length; i++)
+            {
+                Gizmos.color = Color.black;
+                Gizmos.DrawCube(path[i], new Vector3(0.5f, 0.5f, 1f));
+
+                if (i == targetIndex)
+                {
+                    Gizmos.DrawLine(transform.position, path[i]);
+                }
+                else
+                {
+                    Gizmos.DrawLine(path[i - 1], path[i]);
+                }
+            }
+        }
+    }
+    public void DrawGizmos()
     {
         if (path != null)
         {
