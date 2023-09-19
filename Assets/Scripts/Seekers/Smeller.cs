@@ -2,30 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Unit : MonoBehaviour
+public class Smeller : MonoBehaviour
 {
+    public ScentTrail scentTrail;
+    private bool isInsideScentCircle = false;
     public Transform traget;
+    public Transform playerTraget;
     public float speed = 10;
     Vector3[] path;
     int targetIndex;
-    bool currentlyWalking = false;
+    bool walkingBetweenTrails = false;
 
     void Start()
     {
-        currentlyWalking = true;
         PathRequestManeger.RequestPath(transform.position, traget.position, OnPathFound);
     }
 
-    void Update()
+    private void Update()
     {
-        if (!currentlyWalking)
+        isInsideScentCircle = scentTrail.IsInsideScentCircle(transform.position);
+
+        if (isInsideScentCircle && !walkingBetweenTrails)
         {
-            currentlyWalking = true;
-            PathRequestManeger.RequestPath(transform.position, traget.position, OnPathFound);
-            DrawGizmos();
+            walkingBetweenTrails = true;
+            Debug.Log("I smell fear");
+            PathRequestManeger.ClearQueue();
+            targetIndex = 0;
+            PathRequestManeger.RequestPath(transform.position, playerTraget.position, OnPathFound);
+            //DrawGizmos();
+            Debug.Log("to " + playerTraget.position);
         }
     }
-
     public void OnPathFound(Vector3[] newPath, bool pathSucessful)
     {
         if (pathSucessful)
@@ -48,7 +55,6 @@ public class Unit : MonoBehaviour
                 {
                     path = new Vector3[0];
                     targetIndex = 0;
-                    currentlyWalking = false;
                     yield break;
                 }
                 currentWaypoint = path[targetIndex];
@@ -77,24 +83,6 @@ public class Unit : MonoBehaviour
             }
         }
     }
-    public void DrawGizmos()
-    {
-        if (path != null)
-        {
-            for (int i = targetIndex; i < path.Length; i++)
-            {
-                Gizmos.color = Color.black;
-                Gizmos.DrawCube(path[i], new Vector3(0.5f, 0.5f, 1f));
-
-                if (i == targetIndex)
-                {
-                    Gizmos.DrawLine(transform.position, path[i]);
-                }
-                else
-                {
-                    Gizmos.DrawLine(path[i - 1], path[i]);
-                }
-            }
-        }
-    }
 }
+
+

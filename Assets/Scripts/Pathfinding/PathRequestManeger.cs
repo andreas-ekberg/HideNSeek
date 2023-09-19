@@ -39,6 +39,12 @@ public class PathRequestManeger : MonoBehaviour
         isProcessingPath = false;
         TryProcessNext();
     }
+
+    public static void ClearQueue()
+    {
+        instance.pathRequestQueue.Clear();
+        Debug.Log("Cleared queue");
+    }
     struct PathRequest
     {
         public Vector3 pathStart;
