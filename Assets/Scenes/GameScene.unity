@@ -10982,7 +10982,7 @@ GameObject:
   - component: {fileID: 598495563}
   - component: {fileID: 598495567}
   m_Layer: 0
-  m_Name: Slime
+  m_Name: Smeller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
