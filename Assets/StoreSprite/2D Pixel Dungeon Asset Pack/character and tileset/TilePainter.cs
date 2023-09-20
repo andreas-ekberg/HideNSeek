@@ -38,9 +38,13 @@ public class TilePainter : MonoBehaviour
     }
 
 
-    private void TryOpenDoor(){
+    private void isTriggerEntry();
 
-        if(Math.Abs(PlayerPos.position.x-position.x) < 1.5f  && Math.Abs(PlayerPos.position.y-position.y) < 1.5f && Closed == true){
+    private void TryOpenDoor(){
+        float distanceToDoor = Vector3.Distance(PlayerPos.position, position);
+
+        //if(Math.Abs(PlayerPos.position.x-position.x) < 1.5f  && Math.Abs(PlayerPos.position.y-position.y) < 1.5f && Closed == true){
+        if(distanceToDoor <= 1.5f && Closed == true){
             tilemap.SetTile(position, openDoor1);
 
             if(tileRotation == 270 || tileRotation == 90){
@@ -57,7 +61,8 @@ public class TilePainter : MonoBehaviour
             Closed = false;
             myCollider.enabled = false;
         }
-        else if(Math.Abs(PlayerPos.position.x-position.x) < 2.5f  && Math.Abs(PlayerPos.position.y-position.y) < 2.5f && Closed == false){
+        //else if(Math.Abs(PlayerPos.position.x-position.x) < 2.5f  && Math.Abs(PlayerPos.position.y-position.y) < 2.5f && Closed == false){
+        else if(distanceToDoor <= 1.5f && Closed == false){
             tilemap.SetTile(position, closedDoor1);
 
             if(tileRotation == 270 || tileRotation == 90){
