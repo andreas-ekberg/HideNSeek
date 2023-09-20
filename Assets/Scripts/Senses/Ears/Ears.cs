@@ -19,13 +19,8 @@ public class Ears : MonoBehaviour
     public float detectionRadius;
 
     public Transform mainCharacterPos;
-
-
-    void Awake()
-    {
-        radiusCircleParent.transform.position = transform.position;
-
-    }
+    public idlePaths idlePath;
+    bool idleWalking = false;
     private void Start()
     {
 
@@ -36,6 +31,13 @@ public class Ears : MonoBehaviour
     {
 
         radiusCircleParent.transform.position = transform.position;
+        if (!idleWalking)
+        {
+            idleWalking = true;
+            Vector3 newTargetPos = idlePath.GetIdleTargetPos();
+            PathRequestManeger.RequestPath(transform.position, newTargetPos, OnPathFound);
+
+        }
     }
 
 
@@ -69,19 +71,32 @@ public class Ears : MonoBehaviour
     }
     IEnumerator FollowPath()
     {
-        Vector3 currentWaypoint = path[0];
+        if (path == null || path.Length == 0)
+        {
+            // Path is invalid or empty, so exit the coroutine
+            if (idleWalking)
+            {
+                idleWalking = false;
+            }
+            yield break;
+        }
+        targetIndex = 0;
+        Vector3 currentWaypoint = path[targetIndex];
         while (true)
         {
             if (transform.position == currentWaypoint)
             {
-                Debug.Log(currentWaypoint);
 
                 targetIndex++;
                 if (targetIndex >= path.Length)
                 {
-                    path = new Vector3[0];
+                    //path = new Vector3[0];
                     targetIndex = 0;
                     currentlyWalking = false;
+                    if (idleWalking)
+                    {
+                        idleWalking = false;
+                    }
                     yield break;
                 }
                 currentWaypoint = path[targetIndex];
