@@ -13,9 +13,12 @@ public class Smeller : MonoBehaviour
     int targetIndex;
     bool walkingBetweenTrails = false;
 
+    bool idleWalking = false;
+    public idlePaths idlePath;
+
     void Start()
     {
-        PathRequestManeger.RequestPath(transform.position, traget.position, OnPathFound);
+        //PathRequestManeger.RequestPath(transform.position, traget.position, OnPathFound);
     }
 
     private void Update()
@@ -32,6 +35,14 @@ public class Smeller : MonoBehaviour
             //DrawGizmos();
             Debug.Log("to " + playerTraget.position);
         }
+
+        if (!idleWalking)
+        {
+            idleWalking = true;
+            Vector3 newTargetPos = idlePath.GetIdleTargetPos();
+            PathRequestManeger.RequestPath(transform.position, newTargetPos, OnPathFound);
+
+        }
     }
     public void OnPathFound(Vector3[] newPath, bool pathSucessful)
     {
@@ -41,10 +52,21 @@ public class Smeller : MonoBehaviour
             StopCoroutine("FollowPath");
             StartCoroutine("FollowPath");
         }
+
     }
     IEnumerator FollowPath()
     {
-        Vector3 currentWaypoint = path[0];
+        if (path == null || path.Length == 0)
+        {
+            // Path is invalid or empty, so exit the coroutine
+            if (idleWalking)
+            {
+                idleWalking = false;
+            }
+            yield break;
+        }
+        targetIndex = 0;
+        Vector3 currentWaypoint = path[targetIndex];
         while (true)
         {
             if (transform.position == currentWaypoint)
@@ -53,8 +75,11 @@ public class Smeller : MonoBehaviour
                 targetIndex++;
                 if (targetIndex >= path.Length)
                 {
-                    path = new Vector3[0];
-                    targetIndex = 0;
+                    //path = new Vector3[0];
+                    if (idleWalking)
+                    {
+                        idleWalking = false;
+                    }
                     yield break;
                 }
                 currentWaypoint = path[targetIndex];
@@ -62,6 +87,7 @@ public class Smeller : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
             yield return null;
         }
+
     }
     public void OnDrawGizmos()
     {
