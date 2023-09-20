@@ -51,7 +51,7 @@ public class ScentTrail : MonoBehaviour
         return false;
     }
 
-    /* public void OnDrawGizmos()
+    public void OnDrawGizmos()
     {
         if (scentTrail != null)
         {
@@ -64,5 +64,5 @@ public class ScentTrail : MonoBehaviour
                 }
             }
         }
-    } */
+    }
 }
