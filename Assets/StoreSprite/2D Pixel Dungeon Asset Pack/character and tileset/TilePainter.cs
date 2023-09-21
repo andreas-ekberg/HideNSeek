@@ -116,15 +116,18 @@ public class TilePainter : MonoBehaviour
         float distanceToDoor = Vector3.Distance(PlayerPos.position, position);
 
         //if(Math.Abs(PlayerPos.position.x-position.x) < 1.5f  && Math.Abs(PlayerPos.position.y-position.y) < 1.5f && Closed == true){
-        if(distanceToDoor <= 1.5f && Closed == true){
+        if (distanceToDoor <= 1.5f && Closed == true)
+        {
             tilemap.SetTile(position, openDoor1);
 
-            if(tileRotation == 270 || tileRotation == 90){
-                Vector3Int myTemp = new Vector3Int(position.x, position.y+1, position.z);
+            if (tileRotation == 270 || tileRotation == 90)
+            {
+                Vector3Int myTemp = new Vector3Int(position.x, position.y + 1, position.z);
                 tilemap.SetTile(myTemp, openDoor2);
             }
-            else if(tileRotation == 0){
-                Vector3Int myTemp = new Vector3Int(position.x-1, position.y, position.z);
+            else if (tileRotation == 0)
+            {
+                Vector3Int myTemp = new Vector3Int(position.x - 1, position.y, position.z);
                 tilemap.SetTile(myTemp, openDoor2);
             }
 
@@ -134,15 +137,18 @@ public class TilePainter : MonoBehaviour
             myCollider.enabled = false;
         }
         //else if(Math.Abs(PlayerPos.position.x-position.x) < 2.5f  && Math.Abs(PlayerPos.position.y-position.y) < 2.5f && Closed == false){
-        else if(distanceToDoor <= 1.5f && Closed == false){
+        else if (distanceToDoor <= 1.5f && Closed == false)
+        {
             tilemap.SetTile(position, closedDoor1);
 
-            if(tileRotation == 270 || tileRotation == 90){
-                Vector3Int myTemp = new Vector3Int(position.x, position.y+1, position.z);
+            if (tileRotation == 270 || tileRotation == 90)
+            {
+                Vector3Int myTemp = new Vector3Int(position.x, position.y + 1, position.z);
                 tilemap.SetTile(myTemp, closedDoor2);
             }
-            else if(tileRotation == 0){
-                Vector3Int myTemp = new Vector3Int(position.x-1, position.y, position.z);
+            else if (tileRotation == 0)
+            {
+                Vector3Int myTemp = new Vector3Int(position.x - 1, position.y, position.z);
                 tilemap.SetTile(myTemp, closedDoor2);
             }
 
@@ -151,18 +157,19 @@ public class TilePainter : MonoBehaviour
             Closed = true;
             myCollider.enabled = true;
         }
-        else{
+        else
+        {
             Debug.Log("Inte nära!");
         }
         
         
     } */
 
-/*     [ContextMenu("Paint")]
-    // Start is called before the first frame update
-    void Paint()
-    {
-        tilemap.SetTile(position, openDoor);
-    }
- */
+    /*     [ContextMenu("Paint")]
+        // Start is called before the first frame update
+        void Paint()
+        {
+            tilemap.SetTile(position, openDoor);
+        }
+     */
 }
