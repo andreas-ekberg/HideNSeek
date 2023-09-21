@@ -105,6 +105,16 @@ public class Ears : MonoBehaviour
             yield return null;
         }
     }
+
+    public void UpdatePath(Vector3 newTargetPos)
+    {
+        if (idleWalking)
+        {
+            idleWalking = false;
+        }
+        PathRequestManeger.RequestPath(transform.position, newTargetPos, OnPathFound);
+
+    }
     public void OnDrawGizmos()
     {
         if (path != null)

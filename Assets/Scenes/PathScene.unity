@@ -11076,6 +11076,7 @@ GameObject:
   - component: {fileID: 598495567}
   - component: {fileID: 598495566}
   - component: {fileID: 598495568}
+  - component: {fileID: 598495569}
   m_Layer: 0
   m_Name: Listener
   m_TagString: Untagged
@@ -11245,6 +11246,18 @@ MonoBehaviour:
   - {fileID: 1661744872}
   - {fileID: 1918828131}
   - {fileID: 1570582908}
+--- !u!114 &598495569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598495562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 238c56c3123722a4eb3adeae89e25a2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &610244467
 GameObject:
   m_ObjectHideFlags: 0
@@ -19696,6 +19709,7 @@ GameObject:
   - component: {fileID: 1639590381}
   - component: {fileID: 1639590380}
   - component: {fileID: 1639590384}
+  - component: {fileID: 1639590385}
   m_Layer: 0
   m_Name: Smeller
   m_TagString: Untagged
@@ -19720,6 +19734,7 @@ MonoBehaviour:
   playerTraget: {fileID: 1022833061}
   speed: 6
   idlePath: {fileID: 1639590384}
+  aiController: {fileID: 1639590385}
 --- !u!61 &1639590381
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19853,6 +19868,18 @@ MonoBehaviour:
   - {fileID: 1661744872}
   - {fileID: 1918828131}
   - {fileID: 1570582908}
+--- !u!114 &1639590385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639590379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 238c56c3123722a4eb3adeae89e25a2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1661744871
 GameObject:
   m_ObjectHideFlags: 0

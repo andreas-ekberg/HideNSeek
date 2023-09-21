@@ -43,7 +43,6 @@ public class PathRequestManeger : MonoBehaviour
     public static void ClearQueue()
     {
         instance.pathRequestQueue.Clear();
-        Debug.Log("Cleared queue");
     }
     struct PathRequest
     {

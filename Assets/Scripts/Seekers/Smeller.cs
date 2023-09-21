@@ -15,6 +15,7 @@ public class Smeller : MonoBehaviour
 
     bool idleWalking = false;
     public idlePaths idlePath;
+    public AiController aiController;
 
     void Start()
     {
@@ -32,8 +33,7 @@ public class Smeller : MonoBehaviour
             PathRequestManeger.ClearQueue();
             targetIndex = 0;
             PathRequestManeger.RequestPath(transform.position, playerTraget.position, OnPathFound);
-            //DrawGizmos();
-            Debug.Log("to " + playerTraget.position);
+            aiController.UpdateAllEnemyTarget(gameObject, playerTraget.position);
         }
 
         if (!idleWalking)
@@ -87,6 +87,15 @@ public class Smeller : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
             yield return null;
         }
+
+    }
+    public void UpdatePath(Vector3 newTargetPos)
+    {
+        if (idleWalking)
+        {
+            idleWalking = false;
+        }
+        PathRequestManeger.RequestPath(transform.position, newTargetPos, OnPathFound);
 
     }
     public void OnDrawGizmos()
