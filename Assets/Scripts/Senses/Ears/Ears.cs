@@ -21,6 +21,10 @@ public class Ears : MonoBehaviour
     public Transform mainCharacterPos;
     public idlePaths idlePath;
     bool idleWalking = false;
+
+    bool foundPlayer = false;
+
+
     private void Start()
     {
 
@@ -30,7 +34,14 @@ public class Ears : MonoBehaviour
     private void Update()
     {
 
+        //Debug.Log(Vector3.Distance(mainCharacterPos.position, transform.position));
+        if(Vector3.Distance(mainCharacterPos.position, transform.position) < 4.2f && !foundPlayer){
+            PathRequestManeger.RequestPath(transform.position, mainCharacterPos.position, OnPathFound);
+            foundPlayer = false;
+            //idleWalking = true;
+        }
         radiusCircleParent.transform.position = transform.position;
+
         if (!idleWalking)
         {
             idleWalking = true;
@@ -41,7 +52,7 @@ public class Ears : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D other)
+    /* private void OnTriggerEnter2D(Collider2D other)
     {
         // Check if the collision involves another character with a radius
         CircleCollider2D otherCharacterCollider = other.GetComponent<CircleCollider2D>();
@@ -49,16 +60,16 @@ public class Ears : MonoBehaviour
 
         if (otherCharacterCollider != null)
         {
-            //Debug.Log(otherCharacterCollider.radius);
+            Debug.Log(otherCharacterCollider.radius);
 
-            if (otherCharacterCollider.radius == 2)
+            if(otherCharacterCollider.radius == 0.8f)
             {
                 Debug.Log("Collision Detected! Enemy hears player!");
                 PathRequestManeger.RequestPath(transform.position, mainCharacterPos.position, OnPathFound);
             }
 
         }
-    }
+    } */
 
     public void OnPathFound(Vector3[] newPath, bool pathSucessful)
     {
