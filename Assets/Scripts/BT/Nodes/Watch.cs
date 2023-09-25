@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class Watch : Node
 {
-    public GameObject Watcher;
-    public GameObject PlayerCharachter;
+    private GameObject Watcher;
+    private GameObject PlayerCharachter;
+
+    public Watch(GameObject inWatcher, GameObject inPlayerCharachter){
+        Watcher = inWatcher;
+        PlayerCharachter = inPlayerCharachter;
+    }
     
     public override NodeState evaluate(){
         // Check if the bounds of the two colliders intersect.

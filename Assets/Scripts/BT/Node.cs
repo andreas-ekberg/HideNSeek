@@ -13,15 +13,16 @@ public class Node
 {
 
     protected NodeState state;
-    public Node parent;
+    //public Node parent;
     protected List<Node> children;
 
     public Node(){
-        parent = null;
+        //parent = null;
+        children = new List<Node>();
     }
 
-    private void attach(Node node){
-        node.parent = this;
+    public void attach(Node node){
+        //node.parent = this;
         children.Add(node);
     }
     

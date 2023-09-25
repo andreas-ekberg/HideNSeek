@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 public class Sequence : Node
 {
+    public Sequence() : base(){
+    }
 
     public override NodeState evaluate(){
         foreach(Node node in children){
