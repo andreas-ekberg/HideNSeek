@@ -56,7 +56,7 @@ public class TilePainter : MonoBehaviour
                 Debug.Log("nu e vi där igen");
                 TryOpenDoor();
             }
-            TryOpenDoor();
+            //TryOpenDoor();
             
         }
 
@@ -68,7 +68,7 @@ public class TilePainter : MonoBehaviour
             isInsideTriggerZone = false;
         }
         if(other.CompareTag("Enemy")){
-            
+            //TryOpenDoor();
         }
 
 
