@@ -17,10 +17,6 @@ public class AiController : MonoBehaviour
         if (smeller != null)
             enemies.Add(smeller);
 
-        foreach (GameObject enemy in enemies)
-        {
-            Debug.Log("Enemy: " + enemy.name);
-        }
     }
 
     public void UpdateAllEnemyTarget(GameObject callingEnemy, Vector3 newTargetPos)
@@ -32,23 +28,22 @@ public class AiController : MonoBehaviour
 
 
             Debug.Log("Updating target for: " + enemy.name);
-            if (enemy.name == "listener")
+            if (enemy.name == "Listener")
             {
                 Ears earsScript = enemy.GetComponent<Ears>();
                 if (earsScript != null)
                 {
-                    Debug.Log("calling the listenscript");
                     earsScript.UpdatePath(newTargetPos);
                 }
             }
-            /* else if (enemy.name == "smeller")
+            else if (enemy.name == "Smeller")
             {
                 Smeller smellerScript = enemy.GetComponent<Smeller>();
                 if (smellerScript != null)
                 {
                     smellerScript.UpdatePath(newTargetPos);
                 }
-            } */
+            }
         }
     }
 }

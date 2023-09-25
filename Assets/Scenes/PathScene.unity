@@ -11220,11 +11220,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   traget: {fileID: 1022833061}
-  speed: 10
+  speed: 4
   radiusCircleParent: {fileID: 1211384316}
   detectionRadius: 2
   mainCharacterPos: {fileID: 1022833061}
   idlePath: {fileID: 598495568}
+  aiController: {fileID: 598495569}
 --- !u!114 &598495568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19732,7 +19733,7 @@ MonoBehaviour:
   scentTrail: {fileID: 1022833063}
   traget: {fileID: 1874695561}
   playerTraget: {fileID: 1022833061}
-  speed: 6
+  speed: 3
   idlePath: {fileID: 1639590384}
   aiController: {fileID: 1639590385}
 --- !u!61 &1639590381

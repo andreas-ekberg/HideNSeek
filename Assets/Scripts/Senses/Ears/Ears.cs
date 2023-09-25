@@ -10,10 +10,6 @@ public class Ears : MonoBehaviour
     Vector3[] path;
     int targetIndex;
     bool currentlyWalking = false;
-
-
-
-
     // För Gustav Ears
     public GameObject radiusCircleParent; // Adjust this radius as need
     public float detectionRadius;
@@ -21,6 +17,9 @@ public class Ears : MonoBehaviour
     public Transform mainCharacterPos;
     public idlePaths idlePath;
     bool idleWalking = false;
+    bool chasingTarget = false;
+    public AiController aiController;
+
     private void Start()
     {
 
@@ -31,7 +30,7 @@ public class Ears : MonoBehaviour
     {
 
         radiusCircleParent.transform.position = transform.position;
-        if (!idleWalking)
+        if (!idleWalking && !chasingTarget)
         {
             idleWalking = true;
             Vector3 newTargetPos = idlePath.GetIdleTargetPos();
@@ -55,6 +54,7 @@ public class Ears : MonoBehaviour
             {
                 Debug.Log("Collision Detected! Enemy hears player!");
                 PathRequestManeger.RequestPath(transform.position, mainCharacterPos.position, OnPathFound);
+                aiController.UpdateAllEnemyTarget(gameObject, mainCharacterPos.position);
             }
 
         }
@@ -91,12 +91,7 @@ public class Ears : MonoBehaviour
                 if (targetIndex >= path.Length)
                 {
                     //path = new Vector3[0];
-                    targetIndex = 0;
-                    currentlyWalking = false;
-                    if (idleWalking)
-                    {
-                        idleWalking = false;
-                    }
+                    ResetPath();
                     yield break;
                 }
                 currentWaypoint = path[targetIndex];
@@ -108,12 +103,20 @@ public class Ears : MonoBehaviour
 
     public void UpdatePath(Vector3 newTargetPos)
     {
+        chasingTarget = true;
+        ResetPath();
+        PathRequestManeger.RequestPath(transform.position, newTargetPos, OnPathFound);
+
+    }
+
+    public void ResetPath()
+    {
+        path = new Vector3[0];
+        targetIndex = 0;
         if (idleWalking)
         {
             idleWalking = false;
         }
-        PathRequestManeger.RequestPath(transform.position, newTargetPos, OnPathFound);
-
     }
     public void OnDrawGizmos()
     {
