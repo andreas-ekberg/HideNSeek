@@ -736,7 +736,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &345850034
 Animator:
   serializedVersion: 5
@@ -11413,9 +11413,9 @@ GameObject:
   - component: {fileID: 598495565}
   - component: {fileID: 598495564}
   - component: {fileID: 598495563}
-  - component: {fileID: 598495567}
   - component: {fileID: 598495571}
   - component: {fileID: 598495568}
+  - component: {fileID: 598495572}
   - component: {fileID: 598495569}
   - component: {fileID: 598495570}
   m_Layer: 0
@@ -11424,7 +11424,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &598495563
 Animator:
   serializedVersion: 5
@@ -11513,25 +11513,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &598495567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 598495562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92a6a66f9788e2d409eaf69ba584dbd4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  traget: {fileID: 1022833061}
-  speed: 3
-  radiusCircleParent: {fileID: 1211384316}
-  detectionRadius: 2
-  mainCharacterPos: {fileID: 1022833061}
-  idlePath: {fileID: 598495568}
-  aiController: {fileID: 598495571}
 --- !u!114 &598495568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11625,6 +11606,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 238c56c3123722a4eb3adeae89e25a2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &598495572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598495562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b318b50bdb726540931fcec08baf9a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &610244467
@@ -13413,7 +13406,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!58 &1211384317
 CircleCollider2D:
   m_ObjectHideFlags: 0
