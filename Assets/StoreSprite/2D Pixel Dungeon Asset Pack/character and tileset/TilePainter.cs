@@ -51,7 +51,6 @@ public class TilePainter : MonoBehaviour
             isInsideTriggerZone = true;
         }
         if(other.CompareTag("Enemy")){
-            Debug.Log("nu e vi där");
             if(otherCharacterCollider.radius == 0.1f){
                 Debug.Log("nu e vi där igen");
                 TryOpenDoor();
@@ -64,11 +63,16 @@ public class TilePainter : MonoBehaviour
 
 
     private void OnTriggerExit2D(Collider2D other){
+        CircleCollider2D otherCharacterCollider = other.GetComponent<CircleCollider2D>();
+
         if(other.CompareTag("Player")){
             isInsideTriggerZone = false;
         }
         if(other.CompareTag("Enemy")){
-            //TryOpenDoor();
+             if(otherCharacterCollider.radius == 0.1f){
+                Debug.Log("lämnar");
+                TryOpenDoor();
+            }
         }
 
 
