@@ -9,7 +9,6 @@ public class Ears : MonoBehaviour
     public float speed = 10;
     Vector3[] path;
     int targetIndex;
-    bool currentlyWalking = false;
     // För Gustav Ears
     public GameObject radiusCircleParent; // Adjust this radius as need
     public float detectionRadius;

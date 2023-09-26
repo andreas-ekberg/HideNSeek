@@ -621,6 +621,7 @@ GameObject:
   - component: {fileID: 173375195}
   - component: {fileID: 173375194}
   - component: {fileID: 173375193}
+  - component: {fileID: 173375197}
   m_Layer: 0
   m_Name: A*
   m_TagString: Untagged
@@ -694,6 +695,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &173375197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173375192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc361172f6985ad44981fb611aec8fe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idlePathsTargetPos:
+  - {fileID: 1022327970}
+  - {fileID: 1303224849}
+  - {fileID: 1362946743}
+  - {fileID: 1967688117}
+  - {fileID: 1922065505}
+  - {fileID: 561495887}
+  - {fileID: 1614322951}
+  - {fileID: 1950247995}
 --- !u!1 &345850033
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,8 +727,10 @@ GameObject:
   - component: {fileID: 345850036}
   - component: {fileID: 345850035}
   - component: {fileID: 345850034}
+  - component: {fileID: 345850038}
+  - component: {fileID: 345850037}
   m_Layer: 0
-  m_Name: FlyingEye
+  m_Name: Watcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -800,6 +824,39 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &345850037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345850033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc361172f6985ad44981fb611aec8fe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idlePathsTargetPos:
+  - {fileID: 1022327970}
+  - {fileID: 1303224849}
+  - {fileID: 1362946743}
+  - {fileID: 1967688117}
+  - {fileID: 1922065505}
+  - {fileID: 561495887}
+  - {fileID: 1614322951}
+  - {fileID: 1950247995}
+--- !u!114 &345850038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345850033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e35da7adc303c144ae1ba0134870fdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &455296643
 GameObject:
   m_ObjectHideFlags: 0
@@ -11305,7 +11362,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &598495563
 Animator:
   serializedVersion: 5
@@ -20279,7 +20336,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1639590380
 MonoBehaviour:
   m_ObjectHideFlags: 0
