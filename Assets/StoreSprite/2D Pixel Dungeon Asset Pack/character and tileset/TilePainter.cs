@@ -44,18 +44,36 @@ public class TilePainter : MonoBehaviour
 
 
     private void OnTriggerEnter2D(Collider2D other){
-        Debug.Log("hej");
-        //if(other.CompareTag("Player")){
+        CircleCollider2D otherCharacterCollider = other.GetComponent<CircleCollider2D>();
+
+        Debug.Log(otherCharacterCollider.radius);
+        if(other.CompareTag("Player")){
             isInsideTriggerZone = true;
-        //}
+        }
+        if(other.CompareTag("Enemy")){
+            if(otherCharacterCollider.radius == 0.1f){
+                Debug.Log("nu e vi där igen");
+                TryOpenDoor();
+            }
+            //TryOpenDoor();
+            
+        }
 
     }
 
 
     private void OnTriggerExit2D(Collider2D other){
-        //if(other.CompareTag("Player")){
+        CircleCollider2D otherCharacterCollider = other.GetComponent<CircleCollider2D>();
+
+        if(other.CompareTag("Player")){
             isInsideTriggerZone = false;
-        //}
+        }
+        if(other.CompareTag("Enemy")){
+             if(otherCharacterCollider.radius == 0.1f){
+                Debug.Log("lämnar");
+                TryOpenDoor();
+            }
+        }
 
 
         Debug.Log("gick ut");
