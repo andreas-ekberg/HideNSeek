@@ -11295,6 +11295,7 @@ GameObject:
   - component: {fileID: 598495564}
   - component: {fileID: 598495563}
   - component: {fileID: 598495567}
+  - component: {fileID: 598495571}
   - component: {fileID: 598495568}
   - component: {fileID: 598495569}
   - component: {fileID: 598495570}
@@ -11411,6 +11412,7 @@ MonoBehaviour:
   detectionRadius: 2
   mainCharacterPos: {fileID: 1022833061}
   idlePath: {fileID: 598495568}
+  aiController: {fileID: 598495571}
 --- !u!114 &598495568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11494,6 +11496,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &598495571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598495562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 238c56c3123722a4eb3adeae89e25a2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &610244467
 GameObject:
   m_ObjectHideFlags: 0
@@ -20254,6 +20268,7 @@ GameObject:
   - component: {fileID: 1639590383}
   - component: {fileID: 1639590382}
   - component: {fileID: 1639590380}
+  - component: {fileID: 1639590388}
   - component: {fileID: 1639590385}
   - component: {fileID: 1639590384}
   - component: {fileID: 1639590386}
@@ -20282,6 +20297,7 @@ MonoBehaviour:
   playerTraget: {fileID: 1022833061}
   speed: 6
   idlePath: {fileID: 1639590385}
+  aiController: {fileID: 1639590388}
 --- !u!212 &1639590382
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20453,6 +20469,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1639590388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639590379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 238c56c3123722a4eb3adeae89e25a2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1715338378
 GameObject:
   m_ObjectHideFlags: 0
