@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Follow : Node
+public class Follow : tNode
 {
     private GameObject Watcher;
     private GameObject PlayerCharachter;
@@ -12,10 +12,10 @@ public class Follow : Node
         PlayerCharachter = inPlayerCharachter;
     }
 
-    public override NodeState evaluate(){
+    public override tNodeState evaluate(){
 
         Watcher.transform.position = PlayerCharachter.transform.position;
-        return NodeState.SUCCESS;
+        return tNodeState.SUCCESS;
     }
 
 }

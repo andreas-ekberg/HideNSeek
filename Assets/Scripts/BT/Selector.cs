@@ -1,19 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Selector : Node
+public class Selector : tNode
 {
 
-    public override NodeState evaluate(){
-        foreach(Node node in children){
-            state = node.evaluate();
-            if (state == NodeState.SUCCESS){
+    public override tNodeState evaluate(){
+        foreach(tNode tNode in children){
+            state = tNode.evaluate();
+            if (state == tNodeState.SUCCESS){
                 return state;
 
-            } else if(state == NodeState.RUNNING){
+            } else if(state == tNodeState.RUNNING){
                 return state;
             }
         }
-        return NodeState.FAILURE;
+        return tNodeState.FAILURE;
     }
 }

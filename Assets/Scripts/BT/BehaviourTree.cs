@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class BehaviorTree
 {
-    private Node root;
+    private tNode root;
 
-    public BehaviorTree(Node inRoot){
+    public BehaviorTree(tNode inRoot){
         root = inRoot;   
     }
 
-    public NodeState runTree(){
+    public tNodeState runTree(){
         return root.evaluate();
     }
 

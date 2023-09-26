@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Watch : Node
+public class Watch : tNode
 {
     private GameObject Watcher;
     private GameObject PlayerCharachter;
@@ -12,7 +12,7 @@ public class Watch : Node
         PlayerCharachter = inPlayerCharachter;
     }
     
-    public override NodeState evaluate(){
+    public override tNodeState evaluate(){
         // Check if the bounds of the two colliders intersect.
 
             Collider2D collider1 = Watcher.GetComponent<Collider2D>();
@@ -24,16 +24,16 @@ public class Watch : Node
                 {
                     Debug.Log("Intersection detected!");
                     // Do something when the objects intersect.
-                    return NodeState.SUCCESS;
+                    return tNodeState.SUCCESS;
                 }
                 else
                 {
                     Debug.Log("No intersection.");
                     // Do something when the objects do not intersect.
-                    return NodeState.FAILURE;
+                    return tNodeState.FAILURE;
                 }
             } else{
-                return NodeState.FAILURE;
+                return tNodeState.FAILURE;
             }
     }
 }

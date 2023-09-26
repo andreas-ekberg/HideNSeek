@@ -1,22 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Sequence : Node
+public class Sequence : tNode
 {
     public Sequence() : base(){
     }
 
-    public override NodeState evaluate(){
-        foreach(Node node in children){
-            state = node.evaluate();
-            if (state == NodeState.FAILURE){
+    public override tNodeState evaluate(){
+        foreach(tNode tNode in children){
+            state = tNode.evaluate();
+            if (state == tNodeState.FAILURE){
                 return state;
 
-            } else if(state == NodeState.RUNNING){
+            } else if(state == tNodeState.RUNNING){
                 return state;
             }
         }
         //Last 
-        return NodeState.SUCCESS;
+        return tNodeState.SUCCESS;
     }
 }
