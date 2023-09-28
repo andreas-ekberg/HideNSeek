@@ -11,6 +11,8 @@ public class WatcherTree : MonoBehaviour
 
     private GameObject PlayerCharachter;
 
+    public PathManager pathManager;
+
 
 
     // Start is called before the first frame update
@@ -19,7 +21,7 @@ public class WatcherTree : MonoBehaviour
         PlayerCharachter = GameObject.Find("PlayerCharachter");
 
         idlePaths IdleScript = GetComponent<idlePaths>();
-        IdleWalk IdleWalk1 = new IdleWalk(transform.position,  IdleScript, this, PlayerCharachter);
+        IdleWalk IdleWalk1 = new IdleWalk(transform.position,  IdleScript, this, PlayerCharachter, pathManager);
         Tree = new BehaviorTree(IdleWalk1);
     }
 

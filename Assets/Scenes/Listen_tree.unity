@@ -728,6 +728,7 @@ GameObject:
   - component: {fileID: 345850035}
   - component: {fileID: 345850034}
   - component: {fileID: 345850038}
+  - component: {fileID: 345850040}
   - component: {fileID: 345850037}
   - component: {fileID: 345850039}
   m_Layer: 0
@@ -858,6 +859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e35da7adc303c144ae1ba0134870fdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pathManager: {fileID: 0}
 --- !u!60 &345850039
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -919,6 +921,31 @@ PolygonCollider2D:
       - {x: 0.43287238, y: -0.030000161}
       - {x: 0.41779074, y: 0.1227094}
   m_UseDelaunayMesh: 0
+--- !u!114 &345850040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345850033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af4c4b254624b4949bd7644e2595b0da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Seeker: {fileID: 345850033}
+  targetIndex: 0
+  path:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
 --- !u!1 &455296643
 GameObject:
   m_ObjectHideFlags: 0
@@ -11416,6 +11443,7 @@ GameObject:
   - component: {fileID: 598495571}
   - component: {fileID: 598495568}
   - component: {fileID: 598495572}
+  - component: {fileID: 598495573}
   - component: {fileID: 598495569}
   - component: {fileID: 598495570}
   m_Layer: 0
@@ -11620,6 +11648,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b318b50bdb726540931fcec08baf9a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pathManager: {fileID: 598495573}
+--- !u!114 &598495573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598495562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af4c4b254624b4949bd7644e2595b0da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Seeker: {fileID: 598495562}
+  targetIndex: 0
+  path:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
 --- !u!1 &610244467
 GameObject:
   m_ObjectHideFlags: 0

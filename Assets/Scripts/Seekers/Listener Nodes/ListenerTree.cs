@@ -20,6 +20,10 @@ public class ListenerTree : MonoBehaviour
 
     float speed = 10f;
 
+    public PathManager pathManager;
+
+
+
 
 
     // Start is called before the first frame update
@@ -29,10 +33,10 @@ public class ListenerTree : MonoBehaviour
         idlePaths IdleScript = GetComponent<idlePaths>();
 
 
-        IdleWalk _IdleWalk = new IdleWalk(transform.position,  IdleScript, this, PlayerCharachter);
+        IdleWalk _IdleWalk = new IdleWalk(transform.position,  IdleScript, this, PlayerCharachter, pathManager);
         HasHeardPlayer _HasHeardPlayer = new HasHeardPlayer();
         Listen _Listen = new Listen(gameObject, PlayerCharachter);
-        Chase _Chase = new Chase(this, PlayerCharachter);
+        Chase _Chase = new Chase(this, PlayerCharachter, pathManager);
         
         Sequence SEQ1 = new Sequence();
         Selector SEL1 = new Selector();
@@ -60,7 +64,7 @@ public class ListenerTree : MonoBehaviour
 
 
 
-    public static void UpdatePath(Vector3 SeekerPos, Vector3 PlayerPos)
+    /* public static void UpdatePath(Vector3 SeekerPos, Vector3 PlayerPos)
     {
         path = new Vector3[0];
         targetIndex = 0;
@@ -79,6 +83,7 @@ public class ListenerTree : MonoBehaviour
             StartCoroutine("FollowPath");
         }
     }
+
     private IEnumerator FollowPath()
     {
         if (path == null || path.Length == 0)
@@ -129,6 +134,6 @@ public class ListenerTree : MonoBehaviour
                     Gizmos.DrawLine(path[i - 1], path[i]);
                 }
             }
-        }
-    }
+        } 
+    }*/
 }

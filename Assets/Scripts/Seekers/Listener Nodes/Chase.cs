@@ -11,15 +11,18 @@ public class Chase : tNode
 
     private bool currentlyChasing = false;
 
+    private PathManager pathManager;
 
-    public Chase(MonoBehaviour _Seeker, GameObject _PlayerCharachter){
+
+    public Chase(MonoBehaviour _Seeker, GameObject _PlayerCharachter, PathManager _pathManager){
         Seeker = _Seeker;
         PlayerCharachter = _PlayerCharachter;
+        pathManager = _pathManager;
     }
 
     public override tNodeState evaluate(){
         Debug.Log("Inne i Chase!!!");
-        if(ListenerTree.targetIndex >= ListenerTree.path.Length){
+        if(pathManager.targetIndex >= pathManager.path.Length){
             currentlyChasing = false;
             ListenerTree.hasHeard = false;
             return tNodeState.FAILURE;
@@ -28,7 +31,7 @@ public class Chase : tNode
             return tNodeState.SUCCESS;
         }
         else if(!currentlyChasing){
-            ListenerTree.UpdatePath(Seeker.transform.position, PlayerCharachter.transform.position);
+            pathManager.UpdatePath();
             currentlyChasing = true;
             return tNodeState.RUNNING;
         }
