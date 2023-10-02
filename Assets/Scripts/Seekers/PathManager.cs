@@ -54,7 +54,6 @@ public class PathManager : MonoBehaviour
         Vector3 currentWaypoint = path[targetIndex];
         while (true)
         {
-            Debug.Log(path.Length);
 
             if (Seeker.transform.position == currentWaypoint)
             {

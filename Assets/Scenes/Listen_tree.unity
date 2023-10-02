@@ -946,6 +946,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
+  done: 0
 --- !u!1 &455296643
 GameObject:
   m_ObjectHideFlags: 0
@@ -11452,7 +11453,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &598495563
 Animator:
   serializedVersion: 5
@@ -11674,6 +11675,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
+  done: 0
 --- !u!1 &610244467
 GameObject:
   m_ObjectHideFlags: 0
@@ -20433,9 +20435,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1639590383}
   - component: {fileID: 1639590382}
-  - component: {fileID: 1639590380}
-  - component: {fileID: 1639590388}
   - component: {fileID: 1639590385}
+  - component: {fileID: 1639590390}
+  - component: {fileID: 1639590389}
   - component: {fileID: 1639590384}
   - component: {fileID: 1639590386}
   - component: {fileID: 1639590387}
@@ -20445,25 +20447,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1639590380
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1639590379}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72865925742b1214d8641c8fc99abaf4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scentTrail: {fileID: 1022833063}
-  traget: {fileID: 1874695561}
-  playerTraget: {fileID: 1022833061}
-  speed: 6
-  idlePath: {fileID: 1639590385}
-  aiController: {fileID: 1639590388}
+  m_IsActive: 1
 --- !u!212 &1639590382
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20635,7 +20619,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1639590388
+--- !u!114 &1639590389
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20644,9 +20628,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 1639590379}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 238c56c3123722a4eb3adeae89e25a2f, type: 3}
+  m_Script: {fileID: 11500000, guid: af4c4b254624b4949bd7644e2595b0da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Seeker: {fileID: 1639590379}
+  targetIndex: 0
+  path:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  done: 0
+--- !u!114 &1639590390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639590379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f460c6253d59894e8f5e41dd5a5752e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scentTrail: {fileID: 1022833063}
+  pathManager: {fileID: 1639590389}
 --- !u!1 &1715338378
 GameObject:
   m_ObjectHideFlags: 0

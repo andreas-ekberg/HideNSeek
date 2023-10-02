@@ -51,18 +51,18 @@ public class ScentTrail : MonoBehaviour
         return false;
     }
 
-    /* public void OnDrawGizmos()
-    {
-        if (scentTrail != null)
-        {
-            foreach (Scent s in scentTrail)
-            {
-                if (s != null) // Check if the element is not null
-                {
-                    Gizmos.color = Color.white;
-                    Gizmos.DrawSphere(s.scentPosition, s.radius);
-                }
-            }
-        }
-    } */
+    /*   public void OnDrawGizmos()
+      {
+          if (scentTrail != null)
+          {
+              foreach (Scent s in scentTrail)
+              {
+                  if (s != null) // Check if the element is not null
+                  {
+                      Gizmos.color = Color.white;
+                      Gizmos.DrawSphere(s.scentPosition, s.radius);
+                  }
+              }
+          }
+      } */
 }
