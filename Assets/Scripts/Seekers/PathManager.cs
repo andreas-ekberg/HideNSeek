@@ -13,7 +13,7 @@ public class PathManager : MonoBehaviour
     public Vector3[] path = new Vector3[10];
 
     float speed = 4f;
-
+    public bool done = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,11 +21,11 @@ public class PathManager : MonoBehaviour
     }
 
 
-    public void UpdatePath()
+    public void UpdatePath(Vector3 targetPos)
     {
         path = new Vector3[0];
         targetIndex = 0;
-        PathRequestManeger.RequestPath(Seeker.transform.position, Player.transform.position, OnPathFound);
+        PathRequestManeger.RequestPath(Seeker.transform.position, targetPos, OnPathFound);
 
     }
 
@@ -35,29 +35,36 @@ public class PathManager : MonoBehaviour
         {
 
             path = newPath;
-            //Debug.Log(newPath[2]);
             StopCoroutine("FollowPath");
             StartCoroutine("FollowPath");
         }
     }
 
+
     private IEnumerator FollowPath()
     {
+        done = false;
         if (path == null || path.Length == 0)
         {
+            done = true;
             yield break;
+
         }
         targetIndex = 0;
         Vector3 currentWaypoint = path[targetIndex];
         while (true)
         {
+            Debug.Log(path.Length);
+
             if (Seeker.transform.position == currentWaypoint)
             {
 
                 targetIndex++;
                 if (targetIndex >= path.Length)
                 {
-                    ResetPath();
+
+                    // ResetPath();
+                    done = true;
                     yield break;
                 }
                 currentWaypoint = path[targetIndex];
@@ -73,7 +80,7 @@ public class PathManager : MonoBehaviour
         targetIndex = 0;
     }
 
-    /* public void OnDrawGizmos()
+    public void OnDrawGizmos()
     {
         if (path != null)
         {
@@ -92,7 +99,7 @@ public class PathManager : MonoBehaviour
                 }
             }
         }
-    } */
+    }
 
 
 }

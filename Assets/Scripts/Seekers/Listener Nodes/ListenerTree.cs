@@ -9,16 +9,7 @@ public class ListenerTree : MonoBehaviour
     private GameObject PlayerCharachter;
 
     public static bool hasHeard = false;
-
-
-
-    // ------------------- PATH MANAGER -----------------
-
-    public static int targetIndex;
-
-    public static Vector3[] path = new Vector3[10];
-
-    float speed = 10f;
+    public static bool onAPath = false;
 
     public PathManager pathManager;
 
@@ -33,11 +24,11 @@ public class ListenerTree : MonoBehaviour
         idlePaths IdleScript = GetComponent<idlePaths>();
 
 
-        IdleWalk _IdleWalk = new IdleWalk(transform.position,  IdleScript, this, PlayerCharachter, pathManager);
+        IdleWalk _IdleWalk = new IdleWalk(transform.position, IdleScript, this, PlayerCharachter, pathManager);
         HasHeardPlayer _HasHeardPlayer = new HasHeardPlayer();
         Listen _Listen = new Listen(gameObject, PlayerCharachter);
         Chase _Chase = new Chase(this, PlayerCharachter, pathManager);
-        
+
         Sequence SEQ1 = new Sequence();
         Selector SEL1 = new Selector();
         Selector SEL2 = new Selector();

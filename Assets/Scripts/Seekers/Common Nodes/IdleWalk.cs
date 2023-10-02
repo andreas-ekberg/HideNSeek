@@ -6,7 +6,6 @@ public class IdleWalk : tNode
 {
 
     private Vector3 SeekerPos;
-    private bool onAPath = false;
 
     private idlePaths idlePathsPositions;
 
@@ -20,7 +19,8 @@ public class IdleWalk : tNode
 
     private PathManager pathManager;
 
-    public IdleWalk(Vector3 _SeekerPos, idlePaths _idlePathsPositions, MonoBehaviour _monoBehaviour, GameObject _PlayerCharachter, PathManager _pathManager){
+    public IdleWalk(Vector3 _SeekerPos, idlePaths _idlePathsPositions, MonoBehaviour _monoBehaviour, GameObject _PlayerCharachter, PathManager _pathManager)
+    {
         SeekerPos = _SeekerPos;
         idlePathsPositions = _idlePathsPositions;
         monoBehaviour = _monoBehaviour;
@@ -28,21 +28,22 @@ public class IdleWalk : tNode
         pathManager = _pathManager;
     }
 
-    public override tNodeState evaluate(){
-
-        if(!onAPath){
+    public override tNodeState evaluate()
+    {
+        if (!ListenerTree.onAPath)
+        {
             Vector3 targetPos = idlePathsPositions.GetIdleTargetPos();
-            onAPath = true;
-            //Debug.Log(targetPos);
-            pathManager.UpdatePath();
-            //Debug.Log(path);
+            ListenerTree.onAPath = true;
+            pathManager.UpdatePath(targetPos);
             return tNodeState.RUNNING;
         }
-        else if(pathManager.path.Length != null && pathManager.path.Length == 0){
-            onAPath = false;
+        else if (pathManager.path.Length != null && pathManager.done == true)
+        {
+            ListenerTree.onAPath = false;
             return tNodeState.SUCCESS;
         }
-        else{
+        else
+        {
             return tNodeState.RUNNING;
         }
 
