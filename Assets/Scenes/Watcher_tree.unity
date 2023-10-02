@@ -859,7 +859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e35da7adc303c144ae1ba0134870fdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathManager: {fileID: 0}
+  pathManager: {fileID: 345850040}
 --- !u!114 &345850040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11392,7 +11392,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &598495563
 Animator:
   serializedVersion: 5
