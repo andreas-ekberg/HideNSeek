@@ -5,9 +5,9 @@ using UnityEngine;
 public class colliderRotation : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
+    public Collider2D playerCollider;
     //public Vector3 rotation = new Vector3(0.0f, 0.0f, 280.0f);
-    public Vector3 pos1 = new Vector3(1.0f, 1.0f, 0);
-    public Vector3 pos2 = new Vector3(-1.5f,2.0f, 0);
+    private Vector3 prevLocation;
 
 
     public void FlipVertically(string s)
@@ -23,28 +23,29 @@ public class colliderRotation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        prevLocation = transform.position;
+        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), playerCollider);
     }
 
     // Update is called once per frame
     void Update()
     {
 
-
-        Vector3 direction = pos2 - pos1;
+        Vector3 direction = transform.position - prevLocation;
         float angleRadians = Mathf.Atan2(direction.y, direction.x);
         // Convert radians to degrees
         float angleDegrees = angleRadians * Mathf.Rad2Deg;
         float diff = angleDegrees - transform.eulerAngles.z;
         transform.eulerAngles += new Vector3(0.0f,0.0f,diff);
 
-        
+        prevLocation = transform.position; //Update previous Location
 
         //Rotera sprite
         if(transform.eulerAngles.z >= 90.0f && transform.eulerAngles.z <= 270){
-            Debug.Log("SPRITE FACE TO THE LEFT");
+            //Debug.Log("SPRITE FACE TO THE LEFT");
             FlipVertically("LEFT");
         } else {
-            Debug.Log("SPRITE FACE TO THE RIGHT");
+            //Debug.Log("SPRITE FACE TO THE RIGHT");
             FlipVertically("RIGHT");
         }
 
