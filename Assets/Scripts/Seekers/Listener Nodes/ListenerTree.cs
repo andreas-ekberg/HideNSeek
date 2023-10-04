@@ -12,7 +12,7 @@ public class ListenerTree : MonoBehaviour
 
     public PathManager pathManager;
 
-
+    public static Vector3 lastKnownPosition;
 
 
 
@@ -26,9 +26,9 @@ public class ListenerTree : MonoBehaviour
         IdleWalk _IdleWalk = new IdleWalk(IdleScript, pathManager, onAPath);
         //GoToPosition goToPosition = new GoToPosition();
         ClearKnownPosition clearKnownPosition = new ClearKnownPosition();
-        //AmIOnPosition amIOnPosition = new AmIOnPosition();
-        //PlayerPositionKnown playerPositionKnown = new PlayerPositionKnown();
-        //UpdateOthers updateOthers = new UpdateOthers();
+        AmIOnPosition amIOnPosition = new AmIOnPosition(gameObject);
+        PlayerPositionKnown playerPositionKnown = new PlayerPositionKnown();
+        UpdateOthers updateOthers = new UpdateOthers(lastKnownPosition);
         Listen listen = new Listen(gameObject, PlayerCharachter);
         
         //GAMMALT OCH SKA ÄNDRAS HELT?!
@@ -41,6 +41,24 @@ public class ListenerTree : MonoBehaviour
         Selector SEL1 = new Selector();
         Selector SEL2 = new Selector();
         Selector SEL3 = new Selector();
+
+        SEQ2.attach(listen);
+        SEQ2.attach(updateOthers);
+
+        SEL2.attach(SEQ2);
+        SEL2.attach(playerPositionKnown);
+
+        SEQ1.attach(SEL2);
+
+        SEQ3.attach(amIOnPosition);
+        SEQ3.attach(clearKnownPosition);
+
+        SEL3.attach(SEQ3);
+        //SEL3.attach();
+
+        SEQ1.attach(SEL3);
+
+        
 
         Tree = new BehaviorTree(SEL1);
     }

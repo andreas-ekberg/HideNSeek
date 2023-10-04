@@ -19,6 +19,7 @@ public class Listen : tNode
         //Debug.Log("Inne i Listen!!!");
         if (Vector3.Distance(PlayerCharachter.transform.position, Listener.transform.position) < 4.2f)
         {
+            ListenerTree.lastKnownPosition = PlayerCharachter.transform.position;
             return tNodeState.SUCCESS;
         }
         else
