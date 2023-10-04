@@ -737,7 +737,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &345850034
 Animator:
   serializedVersion: 5
@@ -859,7 +859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e35da7adc303c144ae1ba0134870fdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathManager: {fileID: 0}
+  pathManager: {fileID: 345850040}
 --- !u!60 &345850039
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -11453,7 +11453,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &598495563
 Animator:
   serializedVersion: 5
@@ -21384,10 +21384,10 @@ SceneRoots:
   - {fileID: 455296646}
   - {fileID: 1022833053}
   - {fileID: 154756338}
-  - {fileID: 598495565}
   - {fileID: 173375196}
   - {fileID: 1874695561}
-  - {fileID: 1639590383}
   - {fileID: 1211384319}
-  - {fileID: 345850036}
   - {fileID: 170599420}
+  - {fileID: 598495565}
+  - {fileID: 1639590383}
+  - {fileID: 345850036}
