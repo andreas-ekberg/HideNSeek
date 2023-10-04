@@ -22,14 +22,12 @@ public class LookForPlayer : tNode
             {
                 if (collider1.bounds.Intersects(collider2.bounds))
                 {
-                    Debug.Log("Intersection detected!");
                     // Do something when the objects intersect.
                     WatcherTree.hasSeen = true;
                     return tNodeState.SUCCESS;
                 }
                 else
                 {
-                    Debug.Log("No intersection.");
                     // Do something when the objects do not intersect.
                     WatcherTree.hasSeen = false;
                     return tNodeState.FAILURE;

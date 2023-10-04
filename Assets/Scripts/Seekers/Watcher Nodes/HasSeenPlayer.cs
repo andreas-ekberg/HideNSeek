@@ -12,7 +12,6 @@ public class HasSeenPlayer : tNode
         if (WatcherTree.hasSeen){
             return tNodeState.SUCCESS;
         } else {
-            Debug.Log("FAIL");
             return tNodeState.FAILURE;
         }
     }
