@@ -24,7 +24,7 @@ public class ListenerTree : MonoBehaviour
         idlePaths IdleScript = GetComponent<idlePaths>();
 
 
-        IdleWalk _IdleWalk = new IdleWalk(transform.position, IdleScript, this, PlayerCharachter, pathManager);
+        IdleWalk _IdleWalk = new IdleWalk(IdleScript, pathManager, onAPath);
         HasHeardPlayer _HasHeardPlayer = new HasHeardPlayer();
         Listen _Listen = new Listen(gameObject, PlayerCharachter);
         Chase _Chase = new Chase(this, PlayerCharachter, pathManager);

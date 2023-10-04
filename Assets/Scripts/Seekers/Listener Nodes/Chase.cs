@@ -23,7 +23,7 @@ public class Chase : tNode
 
     public override tNodeState evaluate()
     {
-        Debug.Log("Inne i Chase!!!");
+        //Debug.Log("Inne i Chase!!!");
         if (pathManager.done == true)
         {
             currentlyChasing = false;

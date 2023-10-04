@@ -5,41 +5,31 @@ using UnityEngine;
 public class IdleWalk : tNode
 {
 
-    private Vector3 SeekerPos;
-
     private idlePaths idlePathsPositions;
-
-    private int targetIndex;
-
-    float speed = 10f;
-
-    private MonoBehaviour monoBehaviour;
-
-    private GameObject PlayerCharachter;
 
     private PathManager pathManager;
 
-    public IdleWalk(Vector3 _SeekerPos, idlePaths _idlePathsPositions, MonoBehaviour _monoBehaviour, GameObject _PlayerCharachter, PathManager _pathManager)
+    public bool onAPath;
+
+    public IdleWalk(idlePaths _idlePathsPositions, PathManager _pathManager, bool _onAPath)
     {
-        SeekerPos = _SeekerPos;
         idlePathsPositions = _idlePathsPositions;
-        monoBehaviour = _monoBehaviour;
-        PlayerCharachter = _PlayerCharachter;
         pathManager = _pathManager;
+        onAPath = _onAPath;
     }
 
     public override tNodeState evaluate()
     {
-        if (!ListenerTree.onAPath)
+        if (!onAPath)
         {
             Vector3 targetPos = idlePathsPositions.GetIdleTargetPos();
-            ListenerTree.onAPath = true;
+            onAPath = true;
             pathManager.UpdatePath(targetPos);
             return tNodeState.RUNNING;
         }
         else if (pathManager.path.Length != null && pathManager.done == true)
         {
-            ListenerTree.onAPath = false;
+            onAPath = false;
             return tNodeState.SUCCESS;
         }
         else
