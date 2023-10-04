@@ -27,7 +27,6 @@ public class Chase : tNode
         if (pathManager.done == true)
         {
             currentlyChasing = false;
-            ListenerTree.hasHeard = false;
             return tNodeState.FAILURE;
         }
         else if (Vector3.Distance(PlayerCharachter.transform.position, Seeker.transform.position) < 0.5f)

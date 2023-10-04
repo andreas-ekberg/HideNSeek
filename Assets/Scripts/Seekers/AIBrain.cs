@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIBrain : MonoBehaviour
+public static class AIBrain
 {
 
 
@@ -11,19 +11,19 @@ private struct playerInfo{
     public static bool doWeKnow = false;
 }
 
-public bool doWeKnow (){
+public static bool doWeKnow (){
     return (playerInfo.doWeKnow);
 }
 
-public Vector3 getKnownPosition(){
+public static Vector3 getKnownPosition(){
     return playerInfo.position;
 }
 
-public void updatePosition(Vector3 inPosition){
+public static void updatePosition(Vector3 inPosition){
     playerInfo.position = inPosition;
 }
 
-public void clearPosition(){
+public static void clearPosition(){
     playerInfo.doWeKnow = false;
 }
 }

@@ -8,7 +8,6 @@ public class ListenerTree : MonoBehaviour
 
     private GameObject PlayerCharachter;
 
-    public static bool hasHeard = false;
     public static bool onAPath = false;
 
     public PathManager pathManager;
@@ -25,20 +24,23 @@ public class ListenerTree : MonoBehaviour
 
 
         IdleWalk _IdleWalk = new IdleWalk(IdleScript, pathManager, onAPath);
-        HasHeardPlayer _HasHeardPlayer = new HasHeardPlayer();
-        Listen _Listen = new Listen(gameObject, PlayerCharachter);
-        Chase _Chase = new Chase(this, PlayerCharachter, pathManager);
+        //GoToPosition goToPosition = new GoToPosition();
+        ClearKnownPosition clearKnownPosition = new ClearKnownPosition();
+        //AmIOnPosition amIOnPosition = new AmIOnPosition();
+        //PlayerPositionKnown playerPositionKnown = new PlayerPositionKnown();
+        //UpdateOthers updateOthers = new UpdateOthers();
+        Listen listen = new Listen(gameObject, PlayerCharachter);
+        
+        //GAMMALT OCH SKA ÄNDRAS HELT?!
+        //Chase _Chase = new Chase(this, PlayerCharachter, pathManager);
 
         Sequence SEQ1 = new Sequence();
+        Sequence SEQ2 = new Sequence();
+        Sequence SEQ3 = new Sequence();
+
         Selector SEL1 = new Selector();
         Selector SEL2 = new Selector();
-
-        SEL2.attach(_HasHeardPlayer);
-        SEL2.attach(_Listen);
-        SEQ1.attach(SEL2);
-        SEQ1.attach(_Chase);
-        SEL1.attach(SEQ1);
-        SEL1.attach(_IdleWalk);
+        Selector SEL3 = new Selector();
 
         Tree = new BehaviorTree(SEL1);
     }
