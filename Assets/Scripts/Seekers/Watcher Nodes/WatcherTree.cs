@@ -18,8 +18,6 @@ public class WatcherTree : MonoBehaviour
     public static bool onAPath = false;
     
 
-    public static bool onAPath = false;
-
 
 
     // Start is called before the first frame update
@@ -28,7 +26,7 @@ public class WatcherTree : MonoBehaviour
         PlayerCharachter = GameObject.Find("PlayerCharachter");
         idlePaths IdleScript = GetComponent<idlePaths>();
 
-        IdleWalk _IdleWalk = new IdleWalk(transform.position,  IdleScript, this, PlayerCharachter, pathManager);
+        IdleWalk _IdleWalk = new IdleWalk(IdleScript, pathManager, onAPath);
         HasSeenPlayer _HasSeenPlayer = new HasSeenPlayer(gameObject, PlayerCharachter,watcherCollider);
         LookAround _LookAround = new LookAround();
         Chase _Chase = new Chase(this, PlayerCharachter, pathManager);
