@@ -16,6 +16,8 @@ public class WatcherTree : MonoBehaviour
 
     public static bool hasSeen = false;
     public static bool onAPath = false;
+
+    private static bool currentlyChasing = false;
     
 
 
@@ -26,23 +28,38 @@ public class WatcherTree : MonoBehaviour
         PlayerCharachter = GameObject.Find("PlayerCharachter");
         idlePaths IdleScript = GetComponent<idlePaths>();
 
-        IdleWalk _IdleWalk = new IdleWalk(IdleScript, pathManager, onAPath);
-        HasSeenPlayer _HasSeenPlayer = new HasSeenPlayer();
-        LookForPlayer _LookForPlayer = new LookForPlayer(gameObject, PlayerCharachter, watcherCollider);
-        Chase _Chase = new Chase(this, PlayerCharachter, pathManager);
+        IdleWalk idleWalk = new IdleWalk(IdleScript, pathManager, onAPath);
+        GoToPosition goToPosition = new GoToPosition(pathManager, gameObject, currentlyChasing);
+        ClearKnownPosition clearKnownPosition = new ClearKnownPosition();
+        PlayerPositionKnown playerPositionKnown = new PlayerPositionKnown();
+        AmIOnPosition amIOnPosition = new AmIOnPosition(gameObject, currentlyChasing);
+        LookForPlayer lookForPlayer = new LookForPlayer(gameObject, PlayerCharachter, watcherCollider, currentlyChasing);
+
 
         Sequence SEQ1 = new Sequence();
         Selector SEL1 = new Selector();
         Selector SEL2 = new Selector();
+        Selector SEL3 = new Selector();
+        Sequence SEQ2 = new Sequence();
+        Sequence SEQ3 = new Sequence();
 
-        SEL2.attach(_HasSeenPlayer);
-        SEL2.attach(_LookForPlayer);
+
+         SEQ2.attach(lookForPlayer);
+
+        SEL2.attach(SEQ2);
+        SEL2.attach(playerPositionKnown);
 
         SEQ1.attach(SEL2);
-        SEQ1.attach(_Chase);
 
+        SEQ3.attach(amIOnPosition);
+        SEQ3.attach(clearKnownPosition);
+
+        SEL3.attach(SEQ3);
+        SEL3.attach(goToPosition);
+
+        SEQ1.attach(SEL3);
         SEL1.attach(SEQ1);
-        SEL1.attach(_IdleWalk);
+        SEL1.attach(idleWalk);
 
         Tree = new BehaviorTree(SEL1);
     }
