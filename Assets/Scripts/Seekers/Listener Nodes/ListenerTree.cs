@@ -12,10 +12,6 @@ public class ListenerTree : MonoBehaviour
 
     public PathManager pathManager;
 
-    public static Vector3 lastKnownPosition;
-
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -23,12 +19,12 @@ public class ListenerTree : MonoBehaviour
         idlePaths IdleScript = GetComponent<idlePaths>();
 
 
-        IdleWalk _IdleWalk = new IdleWalk(IdleScript, pathManager, onAPath);
-        //GoToPosition goToPosition = new GoToPosition();
+        IdleWalk idleWalk = new IdleWalk(IdleScript, pathManager, onAPath);
+        GoToPosition goToPosition = new GoToPosition(pathManager);
         ClearKnownPosition clearKnownPosition = new ClearKnownPosition();
         AmIOnPosition amIOnPosition = new AmIOnPosition(gameObject);
         PlayerPositionKnown playerPositionKnown = new PlayerPositionKnown();
-        UpdateOthers updateOthers = new UpdateOthers(lastKnownPosition);
+        //UpdateOthers updateOthers = new UpdateOthers(lastKnownPosition);
         Listen listen = new Listen(gameObject, PlayerCharachter);
         
         //GAMMALT OCH SKA ÄNDRAS HELT?!
@@ -43,7 +39,7 @@ public class ListenerTree : MonoBehaviour
         Selector SEL3 = new Selector();
 
         SEQ2.attach(listen);
-        SEQ2.attach(updateOthers);
+        //SEQ2.attach(updateOthers);
 
         SEL2.attach(SEQ2);
         SEL2.attach(playerPositionKnown);
@@ -54,9 +50,11 @@ public class ListenerTree : MonoBehaviour
         SEQ3.attach(clearKnownPosition);
 
         SEL3.attach(SEQ3);
-        //SEL3.attach();
+        SEL3.attach(goToPosition);
 
         SEQ1.attach(SEL3);
+        SEL1.attach(SEQ1);
+        SEL1.attach(idleWalk);
 
         
 

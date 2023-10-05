@@ -15,11 +15,16 @@ public class Listen : tNode
 
     public override tNodeState evaluate()
     {
+        Debug.Log("Inside Listen Node!");
+
         // Check if the bounds of the two colliders intersect.
         //Debug.Log("Inne i Listen!!!");
         if (Vector3.Distance(PlayerCharachter.transform.position, Listener.transform.position) < 4.2f)
         {
-            ListenerTree.lastKnownPosition = PlayerCharachter.transform.position;
+            AIBrain.updatePosition(PlayerCharachter.transform.position);
+            GoToPosition.currentlyChasing = false;
+            Debug.Log("I heard you!");
+            
             return tNodeState.SUCCESS;
         }
         else
@@ -27,5 +32,11 @@ public class Listen : tNode
             return tNodeState.FAILURE;
         }
 
+    }
+
+
+    public void OnDrawGizmos(){
+        Gizmos.color = Color.white;
+        Gizmos.DrawSphere(Listener.transform.position, 4.2f);
     }
 }

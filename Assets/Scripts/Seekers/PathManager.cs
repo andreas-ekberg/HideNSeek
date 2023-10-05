@@ -12,7 +12,7 @@ public class PathManager : MonoBehaviour
 
     public Vector3[] path = new Vector3[10];
 
-    float speed = 4f;
+    float speed = 1f;
     public bool done = false;
     // Start is called before the first frame update
     void Start()

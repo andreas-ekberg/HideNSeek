@@ -5,7 +5,12 @@ using UnityEngine;
 public class GoToPosition : tNode
 {
 
-    private bool currentlyChasing = false;
+    public static bool currentlyChasing = false;
+    private PathManager pathManager;
+
+    public GoToPosition(PathManager inPathManager){
+        pathManager = inPathManager;
+    }
 
     public override tNodeState evaluate(){
 
@@ -14,6 +19,7 @@ public class GoToPosition : tNode
             currentlyChasing = true;
             return tNodeState.SUCCESS;
         } else {
+            //Debug.Log("I am currently chasing!");
             return tNodeState.FAILURE;
         }
 

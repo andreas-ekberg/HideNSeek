@@ -5,25 +5,24 @@ using UnityEngine;
 public static class AIBrain
 {
 
-
-private struct playerInfo{
-    public static Vector3 position = new Vector3();
-    public static bool doWeKnow = false;
-}
+// Static fields to store shared data
+private static Vector3 knownPosition = Vector3.zero;
+private static bool weKnow = false;
 
 public static bool doWeKnow (){
-    return (playerInfo.doWeKnow);
+    return (weKnow);
 }
 
 public static Vector3 getKnownPosition(){
-    return playerInfo.position;
+    return knownPosition;
 }
 
 public static void updatePosition(Vector3 inPosition){
-    playerInfo.position = inPosition;
+    weKnow = true;
+    knownPosition = inPosition;
 }
 
 public static void clearPosition(){
-    playerInfo.doWeKnow = false;
+    weKnow = false;
 }
 }
