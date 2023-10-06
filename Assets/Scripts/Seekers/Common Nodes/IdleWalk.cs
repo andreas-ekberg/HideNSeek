@@ -20,6 +20,7 @@ public class IdleWalk : tNode
 
     public override tNodeState evaluate()
     {
+
         if (!onAPath)
         {
             Vector3 targetPos = idlePathsPositions.GetIdleTargetPos();

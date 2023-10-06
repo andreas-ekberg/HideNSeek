@@ -20,7 +20,7 @@ public class ListenerTree : MonoBehaviour
 
 
         IdleWalk idleWalk = new IdleWalk(IdleScript, pathManager, onAPath);
-        GoToPosition goToPosition = new GoToPosition(pathManager);
+        GoToPosition goToPosition = new GoToPosition("Listener",pathManager);
         ClearKnownPosition clearKnownPosition = new ClearKnownPosition();
         AmIOnPosition amIOnPosition = new AmIOnPosition(gameObject);
         PlayerPositionKnown playerPositionKnown = new PlayerPositionKnown();

@@ -5,18 +5,19 @@ using UnityEngine;
 public class GoToPosition : tNode
 {
 
-    public static bool currentlyChasing = false;
     private PathManager pathManager;
+    public string seekerName;
 
-    public GoToPosition(PathManager inPathManager){
+    public GoToPosition(string inSeekerName, PathManager inPathManager){
         pathManager = inPathManager;
+        seekerName = inSeekerName;
     }
 
     public override tNodeState evaluate(){
 
-        if(!currentlyChasing){
+        if(!AIBrain.onAPath(seekerName)){
             pathManager.UpdatePath(AIBrain.getKnownPosition());
-            currentlyChasing = true;
+            AIBrain.setOnAPath(seekerName, true);
             return tNodeState.SUCCESS;
         } else {
             //Debug.Log("I am currently chasing!");

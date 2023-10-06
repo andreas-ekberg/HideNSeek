@@ -14,10 +14,8 @@ public class WatcherTree : MonoBehaviour
     public PathManager pathManager;
     public Collider2D watcherCollider;
 
-    public static bool hasSeen = false;
+    //public static bool hasSeen = false;
     public static bool onAPath = false;
-
-    private static bool currentlyChasing = false;
     
 
 
@@ -29,11 +27,11 @@ public class WatcherTree : MonoBehaviour
         idlePaths IdleScript = GetComponent<idlePaths>();
 
         IdleWalk idleWalk = new IdleWalk(IdleScript, pathManager, onAPath);
-        GoToPosition goToPosition = new GoToPosition(pathManager, gameObject, currentlyChasing);
+        GoToPosition goToPosition = new GoToPosition("Watcher",pathManager);
         ClearKnownPosition clearKnownPosition = new ClearKnownPosition();
         PlayerPositionKnown playerPositionKnown = new PlayerPositionKnown();
-        AmIOnPosition amIOnPosition = new AmIOnPosition(gameObject, currentlyChasing);
-        LookForPlayer lookForPlayer = new LookForPlayer(gameObject, PlayerCharachter, watcherCollider, currentlyChasing);
+        AmIOnPosition amIOnPosition = new AmIOnPosition(gameObject);
+        LookForPlayer lookForPlayer = new LookForPlayer(gameObject, PlayerCharachter, watcherCollider);
 
 
         Sequence SEQ1 = new Sequence();
@@ -44,7 +42,7 @@ public class WatcherTree : MonoBehaviour
         Sequence SEQ3 = new Sequence();
 
 
-         SEQ2.attach(lookForPlayer);
+        SEQ2.attach(lookForPlayer);
 
         SEL2.attach(SEQ2);
         SEL2.attach(playerPositionKnown);

@@ -22,13 +22,12 @@ public class Listen : tNode
         if (Vector3.Distance(PlayerCharachter.transform.position, Listener.transform.position) < 4.2f)
         {
             AIBrain.updatePosition(PlayerCharachter.transform.position);
-            GoToPosition.currentlyChasing = false;
+            AIBrain.setOnAPath(Listener.name, false);
             Debug.Log("I heard you!");
             
             return tNodeState.SUCCESS;
         }
-        else
-        {
+        else {
             return tNodeState.FAILURE;
         }
 

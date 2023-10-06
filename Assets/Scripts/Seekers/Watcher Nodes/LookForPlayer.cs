@@ -22,14 +22,11 @@ public class LookForPlayer : tNode
             {
                 if (collider1.bounds.Intersects(collider2.bounds))
                 {
-                    // Do something when the objects intersect.
-                    WatcherTree.hasSeen = true;
+                    AIBrain.updatePosition(PlayerCharachter.transform.position);
+                    AIBrain.setOnAPath(Watcher.name, false);
                     return tNodeState.SUCCESS;
                 }
-                else
-                {
-                    // Do something when the objects do not intersect.
-                    WatcherTree.hasSeen = false;
+                else {
                     return tNodeState.FAILURE;
                 }
             } else{
