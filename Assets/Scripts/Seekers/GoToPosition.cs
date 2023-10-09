@@ -24,7 +24,11 @@ public class GoToPosition : tNode
             //SomeAsyncMethod();
 
             pathManager.UpdatePath(AIBrain.getKnownPosition());
-            AIBrain.setCurrentlyIdleWalking(seekerName, false);
+            if (!AIBrain.doWeKnow())
+            {
+                AIBrain.setCurrentlyIdleWalking(seekerName, false);
+
+            }
 
             //Debug.Log("GoToPosition");
 

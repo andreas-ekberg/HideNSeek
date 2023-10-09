@@ -30,7 +30,7 @@ public static class AIBrain
     public static void updatePosition(Vector3 inPosition)
     {
         weKnow = true;
-       
+
         knownPosition = inPosition;
     }
 
@@ -123,29 +123,7 @@ public static class AIBrain
         }
     }
 
-     public static void setOnAPath(string seekerName, bool trueOrFalse)
-    {
-        switch (seekerName)
-        {
-            case "Watcher":
-                watcherOnAPatch[0] = trueOrFalse;
-                break;
-            case "Listener":
-                watcherOnAPatch[1] = trueOrFalse;
-                break;
-            case "Smeller":
-                watcherOnAPatch[2] = trueOrFalse;
-                break;
-            case "all":
-                watcherOnAPatch[0] = trueOrFalse;
-                watcherOnAPatch[1] = trueOrFalse;
-                watcherOnAPatch[2] = trueOrFalse;
-                break;
-            default:
-                Debug.Log("Fel inmatning");
-                break;
-        }
-    }
+
 
     public static bool currentlyIdleWalking(string seekerName)
     {
