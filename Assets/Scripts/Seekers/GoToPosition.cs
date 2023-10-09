@@ -8,18 +8,25 @@ public class GoToPosition : tNode
     private PathManager pathManager;
     public string seekerName;
 
-    public GoToPosition(string inSeekerName, PathManager inPathManager){
+    public GoToPosition(string inSeekerName, PathManager inPathManager)
+    {
         pathManager = inPathManager;
         seekerName = inSeekerName;
     }
 
-    public override tNodeState evaluate(){
+    public override tNodeState evaluate()
+    {
 
-        if(!AIBrain.onAPath(seekerName)){
+        if (!AIBrain.onAPath(seekerName))
+        {
+
             pathManager.UpdatePath(AIBrain.getKnownPosition());
+
             AIBrain.setOnAPath(seekerName, true);
             return tNodeState.SUCCESS;
-        } else {
+        }
+        else
+        {
             //Debug.Log("I am currently chasing!");
             return tNodeState.FAILURE;
         }

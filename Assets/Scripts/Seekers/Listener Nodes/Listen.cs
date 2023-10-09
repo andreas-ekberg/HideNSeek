@@ -15,7 +15,6 @@ public class Listen : tNode
 
     public override tNodeState evaluate()
     {
-        Debug.Log("Inside Listen Node!");
 
         // Check if the bounds of the two colliders intersect.
         //Debug.Log("Inne i Listen!!!");
@@ -23,18 +22,19 @@ public class Listen : tNode
         {
             AIBrain.updatePosition(PlayerCharachter.transform.position);
             AIBrain.setOnAPath(Listener.name, false);
-            Debug.Log("I heard you!");
-            
+
             return tNodeState.SUCCESS;
         }
-        else {
+        else
+        {
             return tNodeState.FAILURE;
         }
 
     }
 
 
-    public void OnDrawGizmos(){
+    public void OnDrawGizmos()
+    {
         Gizmos.color = Color.white;
         Gizmos.DrawSphere(Listener.transform.position, 4.2f);
     }

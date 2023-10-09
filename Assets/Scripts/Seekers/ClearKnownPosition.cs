@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class ClearKnownPosition : tNode
 {
-    public override tNodeState evaluate(){
+    public override tNodeState evaluate()
+    {
+        Debug.Log("Clearing pos in brain");
 
         AIBrain.clearPosition();
         return tNodeState.SUCCESS;
