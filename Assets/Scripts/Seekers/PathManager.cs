@@ -54,9 +54,10 @@ public class PathManager : MonoBehaviour
         Vector3 currentWaypoint = path[targetIndex];
         while (true)
         {
-
+            AIBrain.setOnACheckpoint(Seeker.name, false);
             if (Seeker.transform.position == currentWaypoint)
             {
+                AIBrain.setOnACheckpoint(Seeker.name, true);
 
                 targetIndex++;
                 if (targetIndex >= path.Length)

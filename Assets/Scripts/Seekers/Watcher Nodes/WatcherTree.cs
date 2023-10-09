@@ -26,12 +26,13 @@ public class WatcherTree : MonoBehaviour
         PlayerCharachter = GameObject.Find("PlayerCharachter");
         idlePaths IdleScript = GetComponent<idlePaths>();
 
-        IdleWalk idleWalk = new IdleWalk(IdleScript, pathManager, onAPath);
+        IdleWalk idleWalk = new IdleWalk(IdleScript, pathManager, onAPath, "Watcher");
         GoToPosition goToPosition = new GoToPosition("Watcher",pathManager);
         ClearKnownPosition clearKnownPosition = new ClearKnownPosition();
-        PlayerPositionKnown playerPositionKnown = new PlayerPositionKnown();
+        PlayerPositionKnown playerPositionKnown = new PlayerPositionKnown("Watcher");
         AmIOnPosition amIOnPosition = new AmIOnPosition(gameObject);
         LookForPlayer lookForPlayer = new LookForPlayer(gameObject, PlayerCharachter, watcherCollider);
+        AmIOnCheckpoint amIOnCheckpoint = new AmIOnCheckpoint("Watcher");
 
 
         Sequence SEQ1 = new Sequence();
@@ -40,12 +41,16 @@ public class WatcherTree : MonoBehaviour
         Selector SEL3 = new Selector();
         Sequence SEQ2 = new Sequence();
         Sequence SEQ3 = new Sequence();
+        Sequence SEQ4 = new Sequence();
 
 
         SEQ2.attach(lookForPlayer);
 
         SEL2.attach(SEQ2);
-        SEL2.attach(playerPositionKnown);
+        SEL2.attach(SEQ4);
+
+        SEQ4.attach(amIOnCheckpoint);
+        SEQ4.attach(playerPositionKnown);
 
         SEQ1.attach(SEL2);
 

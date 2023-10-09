@@ -26,9 +26,10 @@ public class SnifferTree : MonoBehaviour
         idlePaths IdleScript = GetComponent<idlePaths>();
 
 
-        IdleWalk _IdleWalk = new IdleWalk(IdleScript, pathManager, onAPath);
+        IdleWalk _IdleWalk = new IdleWalk(IdleScript, pathManager, onAPath, "Smeller");
         HasSmelledPlayer _HasSmelledPlayer = new HasSmelledPlayer();
         Smelling _Smelling = new Smelling(gameObject, scentTrail, PlayerCharachter);
+        AmIOnCheckpoint amIOnCheckpoint = new AmIOnCheckpoint("Smeller");
 
         Sequence SEQ1 = new Sequence();
         Selector SEL1 = new Selector();

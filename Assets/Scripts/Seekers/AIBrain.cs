@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,10 @@ public static class AIBrain
     //0=Watcher, 1=Listener, 2=Smeller
     private static List<bool> watcherOnAPatch = new List<bool> { false, false, false };
 
+    private static List<bool> onACheckpoint = new List<bool> { false, false, false };
+
+    private static List<bool> currentlyIdlewalking = new List<bool> { false, false, false };
+
     public static bool doWeKnow()
     {
         return (weKnow);
@@ -25,9 +30,7 @@ public static class AIBrain
     public static void updatePosition(Vector3 inPosition)
     {
         weKnow = true;
-        watcherOnAPatch[0] = false;
-        watcherOnAPatch[1] = false;
-        watcherOnAPatch[2] = false;
+       
         knownPosition = inPosition;
     }
 
@@ -68,6 +71,115 @@ public static class AIBrain
                 break;
             case "Smeller":
                 watcherOnAPatch[2] = trueOrFalse;
+                break;
+            case "all":
+                watcherOnAPatch[0] = trueOrFalse;
+                watcherOnAPatch[1] = trueOrFalse;
+                watcherOnAPatch[2] = trueOrFalse;
+                break;
+            default:
+                Debug.Log("Fel inmatning");
+                break;
+        }
+    }
+
+    public static bool onACheckPoint(string seekerName)
+    {
+        switch (seekerName)
+        {
+            case "Watcher":
+                return onACheckpoint[0];
+                break;
+            case "Listener":
+                return onACheckpoint[1];
+                break;
+            case "Smeller":
+                return onACheckpoint[2];
+                break;
+            default:
+                Debug.Log("Fel inmatning");
+                return false;
+                break;
+        }
+    }
+
+    public static void setOnACheckpoint(string seekerName, bool trueOrFalse)
+    {
+        switch (seekerName)
+        {
+            case "Watcher":
+
+                onACheckpoint[0] = trueOrFalse;
+                break;
+            case "Listener":
+                onACheckpoint[1] = trueOrFalse;
+                break;
+            case "Smeller":
+                onACheckpoint[2] = trueOrFalse;
+                break;
+            default:
+                Debug.Log("Fel inmatning");
+                break;
+        }
+    }
+
+     public static void setOnAPath(string seekerName, bool trueOrFalse)
+    {
+        switch (seekerName)
+        {
+            case "Watcher":
+                watcherOnAPatch[0] = trueOrFalse;
+                break;
+            case "Listener":
+                watcherOnAPatch[1] = trueOrFalse;
+                break;
+            case "Smeller":
+                watcherOnAPatch[2] = trueOrFalse;
+                break;
+            case "all":
+                watcherOnAPatch[0] = trueOrFalse;
+                watcherOnAPatch[1] = trueOrFalse;
+                watcherOnAPatch[2] = trueOrFalse;
+                break;
+            default:
+                Debug.Log("Fel inmatning");
+                break;
+        }
+    }
+
+    public static bool currentlyIdleWalking(string seekerName)
+    {
+        switch (seekerName)
+        {
+            case "Watcher":
+                return currentlyIdlewalking[0];
+                break;
+            case "Listener":
+                return currentlyIdlewalking[1];
+                break;
+            case "Smeller":
+                return currentlyIdlewalking[2];
+                break;
+            default:
+                Debug.Log("Fel inmatning");
+                return false;
+                break;
+        }
+    }
+
+    public static void setCurrentlyIdleWalking(string seekerName, bool trueOrFalse)
+    {
+        switch (seekerName)
+        {
+            case "Watcher":
+
+                currentlyIdlewalking[0] = trueOrFalse;
+                break;
+            case "Listener":
+                currentlyIdlewalking[1] = trueOrFalse;
+                break;
+            case "Smeller":
+                currentlyIdlewalking[2] = trueOrFalse;
                 break;
             default:
                 Debug.Log("Fel inmatning");

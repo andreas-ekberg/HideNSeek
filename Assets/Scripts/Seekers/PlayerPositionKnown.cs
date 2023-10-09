@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class PlayerPositionKnown : tNode
 {
+    public string seekerName;
+    public Listen(string inSeekerName){
+        seekerName = inSeekerName;
+    }
     public override tNodeState evaluate(){
-
-        if (AIBrain.doWeKnow()){
+        //Debug.Log("Inside PlayerPosKnown");
+        if (AIBrain.doWeKnow() && AIBrain.currentlyIdleWalking(seekerName)){
+            AIBrain.setOnAPath("all", false);
             return tNodeState.SUCCESS;
-        } else{
+        }
+        else if(AIBrain.doWeKnow() && !AIBrain.currentlyIdleWalking(seekerName)){
+            return tNodeState.SUCCESS;
+        }else{
             return tNodeState.FAILURE;
         }
     }

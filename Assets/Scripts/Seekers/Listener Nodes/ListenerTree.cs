@@ -19,13 +19,14 @@ public class ListenerTree : MonoBehaviour
         idlePaths IdleScript = GetComponent<idlePaths>();
 
 
-        IdleWalk idleWalk = new IdleWalk(IdleScript, pathManager, onAPath);
+        IdleWalk idleWalk = new IdleWalk(IdleScript, pathManager, onAPath, "Listener");
         GoToPosition goToPosition = new GoToPosition("Listener",pathManager);
         ClearKnownPosition clearKnownPosition = new ClearKnownPosition();
         AmIOnPosition amIOnPosition = new AmIOnPosition(gameObject);
-        PlayerPositionKnown playerPositionKnown = new PlayerPositionKnown();
+        PlayerPositionKnown playerPositionKnown = new PlayerPositionKnown("Listener");
         //UpdateOthers updateOthers = new UpdateOthers(lastKnownPosition);
         Listen listen = new Listen(gameObject, PlayerCharachter);
+        AmIOnCheckpoint amIOnCheckpoint = new AmIOnCheckpoint("Listener");
         
         //GAMMALT OCH SKA ÄNDRAS HELT?!
         //Chase _Chase = new Chase(this, PlayerCharachter, pathManager);
@@ -33,6 +34,7 @@ public class ListenerTree : MonoBehaviour
         Sequence SEQ1 = new Sequence();
         Sequence SEQ2 = new Sequence();
         Sequence SEQ3 = new Sequence();
+        Sequence SEQ4 = new Sequence();
 
         Selector SEL1 = new Selector();
         Selector SEL2 = new Selector();
@@ -42,7 +44,14 @@ public class ListenerTree : MonoBehaviour
         //SEQ2.attach(updateOthers);
 
         SEL2.attach(SEQ2);
-        SEL2.attach(playerPositionKnown);
+
+        SEQ4.attach(amIOnCheckpoint);
+        SEQ4.attach(playerPositionKnown);
+        
+
+        SEL2.attach(SEQ4);
+
+       
 
         SEQ1.attach(SEL2);
 
