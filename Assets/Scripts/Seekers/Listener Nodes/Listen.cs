@@ -31,11 +31,4 @@ public class Listen : tNode
         }
 
     }
-
-
-    public void OnDrawGizmos()
-    {
-        Gizmos.color = Color.white;
-        Gizmos.DrawSphere(Listener.transform.position, 4.2f);
-    }
 }

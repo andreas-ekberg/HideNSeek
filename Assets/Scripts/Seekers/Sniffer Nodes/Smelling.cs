@@ -22,7 +22,8 @@ public class Smelling : tNode
         if (SnifferTree.isInsideScentCircle)
         {
             Debug.Log("I smell fear");
-            SnifferTree.hasSmelled = true;
+            AIBrain.updatePosition(PlayerCharachter.transform.position);
+            AIBrain.setOnAPath(Smeller.name, false);
             return tNodeState.SUCCESS;
         }
         else
